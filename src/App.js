@@ -1,34 +1,37 @@
 import React from "react";
-import Card from "./components/Card";
+import { Routes, Route } from "react-router-dom";
 import Header from "../src/components/Header";
 import Drawer from "../src/components/Drawer";
 import data from "./data.json";
 
-console.log(data);
+import Home from "./components/pages/Home";
+import Favorites from "./components/pages/Favorites";
 
 function App() {
-  const [items, setItems] = React.useState([]);
+  const [items, setItems] = React.useState(data);
   const [cartItems, setCartItems] = React.useState([]);
+  const [favorites, setFavorites] = React.useState([]);
   const [searchValue, setSearchValue] = React.useState("");
   const [cartOpened, setCartOpened] = React.useState(false);
 
-  React.useEffect(() => {
-    setItems(data);
-  }, []);
-
   const onAddToCart = (obj) => {
-    setCartItems([...cartItems, obj]);
+    if (!cartItems.find((item) => item.id === obj.id)) {
+      setCartItems([...cartItems, obj]);
+    }
   };
-  // console.log(cartItems);
 
   const onChangeSearchInput = (event) => {
-    // console.log();
     setSearchValue(event.target.value);
   };
 
   const removeFromCart = (id) => {
-    // console.log(id); 
-    setCartItems((prev) => prev.filter(items => items.id !== id));
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const onAddToFavorites = (obj) => {
+    if (!cartItems.find((item) => item.id === obj.id)) {
+      setCartItems([...cartItems, obj]);
+    }
   };
 
   return (
@@ -41,50 +44,22 @@ function App() {
         />
       )}
       <Header onClickCart={() => setCartOpened(true)} />
-      <div className="content p-40">
-        <div className="d-flex aligh-center justify-between mb-40">
-          <h1>
-            {searchValue ? `Поиск по запросу: "${searchValue}"` : "АССОРТИМЕНТ"}
-          </h1>
-          <div className="search-block d-flex">
-            <img
-              className="image_search"
-              src="../img/search.svg"
-              alt="Search"
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              items={items}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              onChangeSearchInput={onChangeSearchInput}
+              onAddToCart={onAddToCart}
             />
-            {searchValue && (
-              <img
-                onClick={() => setSearchValue("")}
-                className="clear cu-p"
-                src="../img/btn-remove.svg"
-                alt="Clear"
-              />
-            )}
-            <input
-              onChange={onChangeSearchInput}
-              value={searchValue}
-              placeholder="Поиск..."
-            />
-          </div>
-        </div>
-        <div className="d-flex flex-wrap">
-          {items
-            .filter((item) =>
-              item.title.toLowerCase().includes(searchValue.toLowerCase())
-            )
-            .map((item, index) => (
-              <Card
-                key={index}
-                title={item.title}
-                price={item.price}
-                imageUrl={item.imageUrl}
-                onClick={() => console.log(items)}
-                onFavorite={() => console.log("Добавили в закладки")}
-                onPlus={(obj) => onAddToCart(obj)}
-              />
-            ))}
-        </div>
-      </div>
+          }
+        />
+        <Route path="/favorites" element={<Favorites items={favorites} />} />
+      </Routes>
     </div>
   );
 }

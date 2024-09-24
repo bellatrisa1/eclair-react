@@ -1,72 +1,72 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "title": "Эклер ванильный",
     "price": 199,
     "imageUrl": "../img/eclair/1.jpeg"
   },
   {
-    "id": "2",
+    "id": 2,
     "title": "Эклер клубничный",
     "price": 269,
     "imageUrl": "../img/eclair/2.jpeg"
   },
   {
-    "id": "3",
+    "id": 3,
     "title": "Эклер шоколадный",
     "price": 199,
     "imageUrl": "../img/eclair/3.jpeg"
   },
   {
-    "id": "4",
+    "id": 4,
     "title": "Эклер карамельный",
     "price": 229,
     "imageUrl": "../img/eclair/4.jpg"
   },
   {
-    "id": "4",
+    "id": 5,
     "title": "Эклер черничный",
     "price": 269,
     "imageUrl": "../img/eclair/5.jpeg"
   },
   {
-    "id": "5",
+    "id": 6,
     "title": "Эклер малиновый",
     "price": 239,
     "imageUrl": "../img/eclair/6.jpeg"
   },
   {
-    "id": "6",
+    "id": 7,
     "title": "Эклер тирамису",
     "price": 289,
     "imageUrl": "../img/eclair/7.jpeg"
   },
   {
-    "id": "7",
+    "id": 8,
     "title": "Эклер фисташковый",
     "price": 299,
     "imageUrl": "../img/eclair/1.jpeg"
   },
   {
-    "id": "8",
+    "id": 9,
     "title": "Эклер грушевый",
     "price": 259,
     "imageUrl": "../img/eclair/1.jpeg"
   },
   {
-    "id": "9",
+    "id": 10,
     "title": "Эклер вишневый",
     "price": 249,
     "imageUrl": "../img/eclair/2.jpeg"
   },
   {
-    "id": "10",
+    "id": 11,
     "title": "Эклер каппучино",
     "price": 226,
     "imageUrl": "../img/eclair/3.jpeg"
   },
   {
-    "id": "11",
+    "id": 12,
     "title": "Эклер двойной шоколад",
     "price": 299,
     "imageUrl": "../img/eclair/4.jpg"
