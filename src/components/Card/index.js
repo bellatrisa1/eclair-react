@@ -1,18 +1,19 @@
-import React from 'react';
-import styles from "./Card.module.scss"
+import React from "react";
+import styles from "./Card.module.scss";
 
-function Card({ imageUrl, title, price, onFavorite, onPlus}) {
+function Card({ id, imageUrl, title, price, onFavorite, onPlus, inFavor = false }) {
   const [isAdded, setIsAdded] = React.useState(false);
-  const [isFavorite, setIsFavorite] = React.useState(false);
+  const [isFavorite, setIsFavorite] = React.useState(inFavor);
 
   const onClickPlus = () => {
-    onPlus({ imageUrl, title, price });
+    onPlus({ id, imageUrl, title, price });
     setIsAdded(!isAdded);
   };
 
   const onClickFavorite = () => {
     setIsFavorite(!isFavorite);
-  }
+    onFavorite({ id, imageUrl, title, price }); // Добавляем элемент в избранное
+  };
 
   return (
     <div className={styles.card}>
@@ -41,4 +42,5 @@ function Card({ imageUrl, title, price, onFavorite, onPlus}) {
     </div>
   );
 }
+
 export default Card;

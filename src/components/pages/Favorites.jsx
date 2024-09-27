@@ -1,6 +1,6 @@
 import Card from "../Card";
 
-function Favorites({ items }) {
+function Favorites({ items, onAddToFavorites }) {
   return (
     <div className="content p-40">
       <div className="d-flex align-center justify-between mb-40">
@@ -10,11 +10,9 @@ function Favorites({ items }) {
         {items.map((item) => (
           <Card
             key={item.id}
-            title={item.title}
-            price={item.price}
-            imageUrl={item.imageUrl}
-            onClick={() => console.log(items)}
-            favorited={true}
+            inFavor={true}
+            onFavorite={onAddToFavorites}
+            {... item}
           />
         ))}
       </div>

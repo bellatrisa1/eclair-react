@@ -6,7 +6,7 @@ function Home({
   setSearchValue,
   onChangeSearchInput,
   onAddToCart,
-  onAddToFavorites
+  onAddToFavorites,
 }) {
   return (
     <div className="content p-40">
@@ -42,12 +42,10 @@ function Home({
           .map((item) => (
             <Card
               key={item.id}
-              title={item.title}
-              price={item.price}
-              imageUrl={item.imageUrl}
               onClick={() => console.log(items)}
-              onFavorite={() => console.log("Добавили в закладки")}
+              onFavorite={() => onAddToFavorites(item)}
               onPlus={() => onAddToCart(item)}
+              {...item}
             />
           ))}
       </div>

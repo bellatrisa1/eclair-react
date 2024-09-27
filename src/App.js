@@ -15,8 +15,8 @@ function App() {
   const [cartOpened, setCartOpened] = React.useState(false);
 
   const onAddToCart = (obj) => {
-    if (!cartItems.find((item) => item.id === obj.id)) {
-      setCartItems([...cartItems, obj]);
+    if (!cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+      setCartItems([...cartItems, obj]); 
     }
   };
 
@@ -29,8 +29,8 @@ function App() {
   };
 
   const onAddToFavorites = (obj) => {
-    if (!cartItems.find((item) => item.id === obj.id)) {
-      setCartItems([...cartItems, obj]);
+    if (!favorites.find((item) => item.id === obj.id)) {
+      setFavorites([...favorites, obj]);
     }
   };
 
@@ -55,10 +55,16 @@ function App() {
               setSearchValue={setSearchValue}
               onChangeSearchInput={onChangeSearchInput}
               onAddToCart={onAddToCart}
+              onAddToFavorites={onAddToFavorites}
             />
           }
         />
-        <Route path="/favorites" element={<Favorites items={favorites} />} />
+        <Route
+          path="/favorites"
+          element={
+            <Favorites items={favorites} onAddToFavorites={onAddToFavorites} />
+          }
+        />
       </Routes>
     </div>
   );
